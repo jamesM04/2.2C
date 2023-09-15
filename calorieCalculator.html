@@ -107,7 +107,7 @@
                     <option value="4">Super active (very hard exercise and a physical job)</option>
                 </select>
             </div>
-            <button onclick="calculateCalories()">Calculate Calories</button>
+            <button type="button" onclick="calculateCalories()">Calculate Calories</button>
             <p id="result"></p>
         </form>
     </div>
@@ -135,6 +135,12 @@
 
             document.getElementById('result').innerHTML = `Your estimated daily calorie needs: ${tdee.toFixed(2)} calories per day`;
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+        function calculateCalories() {
+            // Your existing calculateCalories() function code here
+        }
+    });
     </script>
 </body>
 </html>
