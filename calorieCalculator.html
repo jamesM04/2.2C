@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Calculator</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link your external CSS file here -->
+    <style>
+        body {
+            background-color: grey;
+        }
+
+     
+        #calorie-calculator {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            padding: 20px;
+        }
+
+    
+        h1 {
+            text-align: center;
+        }
+
+       
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            font-size: 18px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        input[type="number"],
+        input[type="radio"],
+        select {
+            width: 70%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        button {
+            margin: 10px;
+            padding: 5px 10px;
+            background-color: lightblue;
+            align-items: center;
+            border: none;
+            color: black;
+            cursor: pointer;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="calorie-calculator">
+        <h1>Workout Tracker</h1>
+        <img class="weight-icon" src="weight-icon.png">
+        <h3>Calorie Calculator</h3>
+        <nav>
+            <button><a href="homepage.html">Homepage</a></button>
+            <button><a href="routineCreator.html">Routine Creator</a></button>
+            <button><a href="workoutLog.html">Workout Log</a></button>
+            <button><a href="calorieCalculator.html">Calorie Calculator</a></button>
+        </nav>
+        <form>
+            <div>
+                <label for="weight-kg">Weight (in kg):</label>
+                <input type="number" id="weight-kg" required>
+            </div>
+            <div>
+                <label for="height-cm">Height (in cm):</label>
+                <input type="number" id="height-cm" required>
+            </div>
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" id="age" required>
+            </div>
+            <div>
+                <label>Gender:</label>
+                <input type="radio" name="gender" value="male" required> Male
+                <input type="radio" name="gender" value="female" required> Female
+            </div>
+            <div>
+                <label for="activity-level">Activity Level:</label>
+                <select id="activity-level">
+                    <option value="0">Sedentary (little or no exercise)</option>
+                    <option value="1">Lightly active (light exercise or sports 1-3 days a week)</option>
+                    <option value="2">Moderately active (moderate exercise or sports 3-5 days a week)</option>
+                    <option value="3">Very active (hard exercise or sports 6-7 days a week)</option>
+                    <option value="4">Super active (very hard exercise and a physical job)</option>
+                </select>
+            </div>
+            <button onclick="calculateCalories()">Calculate Calories</button>
+            <p id="result"></p>
+        </form>
+    </div>
+
+    <script>
+        function calculateCalories() {
+            const weightKg = parseFloat(document.getElementById('weight-kg').value);
+            const heightCm = parseFloat(document.getElementById('height-cm').value);
+            const age = parseInt(document.getElementById('age').value);
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const activityLevel = parseFloat(document.getElementById('activity-level').value);
+
+            const caloriesPerKg = 7700;
+            const baseCalories = 10;
+            const activityMultiplier = [1.2, 1.375, 1.55, 1.725, 1.9];
+
+            let bmr = 0;
+            if (gender === 'male') {
+                bmr = baseCalories * weightKg + 6.25 * heightCm - 5 * age + 5;
+            } else if (gender === 'female') {
+                bmr = baseCalories * weightKg + 6.25 * heightCm - 5 * age - 161;
+            }
+
+            const tdee = bmr * activityMultiplier[activityLevel];
+
+            document.getElementById('result').innerHTML = `Your estimated daily calorie needs: ${tdee.toFixed(2)} calories per day`;
+        }
+    </script>
+</body>
+</html>

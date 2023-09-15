@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkoutTracker</title>
+    <link rel="stylesheet" href="styles.css"> <!-- You can link an external stylesheet here -->
+</head>
+<body>
+    <div id="app">
+        <div class="WorkoutTracker">
+            <h1>Workout Tracker</h1>
+            <img class="weight-icon" src="weight-icon.png">
+            <h3>Log</h3>
+            <nav>        
+                <button><a href="homepage.html">Homepage</a></button>
+                <button><a href="routineCreator.html">Routine Creator</a></button>
+                <button><a href="workoutLog.html">Workout Log</a></button>
+                <button><a href="calorieCalculator.html">Calorie Calculator</a></button>
+            </nav>
+            <div class="input-container">
+                <span class="input-label">Enter your workouts and exercises below</span>
+                <input class="workout-input" v-model="newWorkout" @keyup.enter="addWorkout" placeholder="Enter a new workout">
+            </div>
+        
+            <button class="add-button" @click="addWorkout">Add Workout</button>
+        
+            <ul>
+                <li v-for="(workout, workoutIndex) in workouts" :key="workoutIndex">
+                    <div class="workout">
+                        <h4>{{ workout.name }}</h4>
+                    
+                        <button @click="removeWorkout(workoutIndex)">Remove Workout</button>
+                        <ul>
+                            <li v-for="(exercise, exerciseIndex) in workout.exercises" :key="exerciseIndex">
+
+                                <div class="exercise">
+                                    <input type="checkbox" v-model="exercise.completed">
+                                    <span :class="{ completed: exercise.completed }">{{ exercise.text }}</span>
+                                    <div class="exercise-details">
+                                        <label for="exercise">Exercise</label>
+                                        <input type="text" v-model="exercise.exercise" id="exercise">
+                                        <br>
+                                        <label for="sets">Sets</label>
+                                        <input type="text" v-model="exercise.sets" id="sets">
+                                        <br>
+                                        <label for="reps">Reps</label>
+                                        <input type="text" v-model="exercise.reps" id="reps">
+                                        <br>
+                                        <label for="weight">Weight</label>
+                                        <input type="text" v-model="exercise.weight" id="weight">
+                                    </div>
+                                    
+                                    <button @click="removeExercise(workoutIndex, exerciseIndex)">Remove Exercise</button>
+                                </div>
+                            </li>
+                        </ul>
+                      
+                        <button class="add-button" @click="addExerciseToWorkout(workoutIndex)">Add Exercise</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                newWorkout: '',
+                newExercise: '',
+                workouts: []
+            },
+            methods: {
+                addWorkout() {
+                    if (this.newWorkout.trim() !== '') {
+                        this.workouts.push({
+                            name: this.newWorkout,
+                            exercises: []
+                        });
+                        this.newWorkout = '';
+                    }
+                },
+                addExercise() {
+                    if (this.newExercise.trim() !== '') {
+                        this.workouts[this.workouts.length - 1].exercises.push({
+                            text: this.newExercise,
+                            completed: false,
+                            sets: '',
+                            reps: '',
+                            weight: ''
+                        });
+                        this.newExercise = '';
+                    }
+                },
+                removeWorkout(index) {
+                    this.workouts.splice(index, 1);
+                },
+                removeExercise(workoutIndex, exerciseIndex) {
+                    this.workouts[workoutIndex].exercises.splice(exerciseIndex, 1);
+                },
+                addExerciseToWorkout(workoutIndex) {
+                    this.workouts[workoutIndex].exercises.push({
+                        text: '',
+                        completed: false,
+                        sets: '',
+                        reps: '',
+                        weight: ''
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

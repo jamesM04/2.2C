@@ -1,0 +1,198 @@
+/* Reset default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a background color to the body */
+body {
+    background-color: grey;
+}
+
+/* Style the WorkoutTracker container */
+.WorkoutTracker {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 20px;
+    
+}
+
+/* Center the h1 element */
+h1 {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Center the navigation buttons */
+nav {
+    background-color: #333;
+    text-align: center;
+    width: auto;
+    height: 80px;
+    padding: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+nav a {
+    text-decoration: none; /* Remove underlines */
+    color: black; /* Set the text color to black */
+}
+
+nav button {
+    margin: 0 10px;
+    text-decoration: none; /* Remove underlines */
+    color: black;
+}
+
+/* Center the input container */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Style the input label */
+.input-label {
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Style the Add Exercise button */
+.add-button {
+    background-color: skyblue;
+    border: none;
+    color: black;
+    padding: 15px 20px;
+    margin-top: 20px; /* Increase the margin-top to add more space */
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style the exercise input field */
+.exercise-input {
+    width: 70%;
+    padding: 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Style the exercise details labels */
+.exercise.details label {
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+/* Style the weight icon (you can replace this with your actual icon) */
+.weight-icon {
+    display: block;
+    margin: 10px auto;
+    width: 50px;
+    height: auto;
+}
+
+/* Style the exercise details input fields */
+.exercise.details input {
+    width: 50px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+h3 {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+}
+
+.workout h4 {
+    margin-bottom:5px; 
+    margin-top: 50px;
+}
+
+p {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* Add this to your existing CSS to style the input-group */
+.input-group {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.input-group label {
+    margin-right: 10px;
+    flex: 1; /* Distribute remaining space evenly among labels */
+}
+
+.input-group input {
+    flex: 2; /* Distribute remaining space evenly among input fields */
+}
+
+button {
+    margin: 10px;
+    padding: 5px 10px;
+    background-color: lightblue;
+    align-items: center;
+    border: none;
+    color: black;
+    cursor: pointer;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#weight,
+#height,
+#age,
+#activity-level {
+    width: 10;
+    padding: 10px;
+    margin: 5px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+label {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#male, #female {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive styles for screens up to 768px width */
+@media (max-width: 768px) {
+    .WorkoutTracker {
+        max-width: 100%;
+    }
+}
+
