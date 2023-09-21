@@ -63,15 +63,16 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.0.11/dist/vue.global.prod.js"></script>
 
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-                newWorkout: '',
-                newExercise: '',
-                workouts: []
+        Vue.createApp({
+            data() {
+                return {
+                    newWorkout: '',
+                    newExercise: '',
+                    workouts: []
+                };
             },
             methods: {
                 addWorkout() {
@@ -111,7 +112,7 @@
                     });
                 }
             }
-        });
+        }).mount('#app');
     </script>
 </body>
 </html>
